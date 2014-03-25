@@ -1,0 +1,410 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pip",
+				"pipe_filedesc"
+			],
+			[
+				"retur",
+				"return_value"
+			],
+			[
+				"ret",
+				"return_value"
+			],
+			[
+				"perf",
+				"perform_step"
+			],
+			[
+				"read",
+				"readObject"
+			],
+			[
+				"pa",
+				"partcount"
+			],
+			[
+				"c",
+				"configfiles"
+			],
+			[
+				"MESSAG",
+				"message_alph"
+			],
+			[
+				"cip",
+				"cipher_parts"
+			],
+			[
+				"lo",
+				"longest_guess"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"backgr",
+				"background"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"no",
+				"nowrap"
+			],
+			[
+				"list",
+				"list-style"
+			],
+			[
+				"margin",
+				"margin-top"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/User/C.sublime-build",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Calle/Dropbox/Skola/kth/os/labbar/labb1/src/digenv.c",
+		"/C/Users/Calle/AppData/Roaming/Sublime Text 2/Packages/User/C.sublime-settings",
+		"/F/Dropbox/Skola/kth/os/labbar/labb1/src/digenv.c",
+		"/C/Users/calle_000/AppData/Local/Temp/scp03186/afs/nada.kth.se/misc/info/fsekt/maillistor/fkm/fkm.maillist",
+		"/F/Dropbox/Skola/kth/os/labbar/labb1/src/example1.c",
+		"/F/Dropbox/Skola/kth/os/labbar/labb1/src/example2.c",
+		"/C/Users/calle_000/AppData/Roaming/Sublime Text 2/Packages/User/C.sublime-build",
+		"/C/Users/calle_000/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/calle_000/AppData/Roaming/Sublime Text 2/Packages/User/my_exec.py",
+		"/C/Users/calle_000/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/calle_000/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/F/Dropbox/Skola/kth/os/labbar/labb1/Makefile",
+		"/F/Dropbox/Skola/kth/os/labbar/labb1/digenv.c",
+		"/C/Users/calle_000/AppData/Local/Temp/scp44289/afs/nada.kth.se/misc/info/fsekt/groups+lists/alla-funk.maillist",
+		"/C/Users/calle_000/AppData/Local/Temp/scp23782/home/fsekt/web/f.kth.se/www/wp-content/themes/THS/header.php",
+		"/C/Users/calle_000/AppData/Local/Temp/scp50915/home/fsekt/web/f.kth.se/www/.htaccess",
+		"/C/Users/calle_000/AppData/Local/Temp/scp43888/afs/nada.kth.se/misc/info/fsekt/maillistor/sanglederiet/sangledare.maillist",
+		"/C/Users/calle_000/AppData/Local/Temp/scp43029/afs/nada.kth.se/misc/info/fsekt/maillistor/qr/fqr.maillist",
+		"/C/Users/calle_000/AppData/Local/Temp/scp42895/afs/nada.kth.se/misc/info/fsekt/maillistor/makesql.sh",
+		"/C/Users/calle_000/AppData/Local/Temp/scp42875/afs/nada.kth.se/misc/info/fsekt/maillistor/jamn/f-ojamn.maillist",
+		"/C/Users/calle_000/AppData/Local/Temp/scp41517/afs/nada.kth.se/misc/info/fsekt/maillistor/in/in-ordf.maillist",
+		"/C/Users/calle_000/AppData/Local/Temp/scp41883/afs/nada.kth.se/misc/info/fsekt/maillistor/in/in.maillist",
+		"/C/Users/calle_000/AppData/Local/Temp/scp41628/afs/nada.kth.se/misc/info/fsekt/maillistor/fsn/fsno.maillist",
+		"/C/Users/calle_000/AppData/Local/Temp/scp41955/afs/nada.kth.se/misc/info/fsekt/maillistor/force/force.maillist",
+		"/C/Users/calle_000/AppData/Local/Temp/scp40723/afs/nada.kth.se/misc/info/fsekt/maillistor/fint/finto.maillist",
+		"/C/Users/calle_000/AppData/Local/Temp/scp40053/afs/nada.kth.se/misc/info/fsekt/maillistor/fint/fint.maillist",
+		"/C/Users/calle_000/AppData/Local/Temp/scp53996/home/fsekt/web/f.kth.se/www/.htaccess",
+		"/E/Users/Calle/Downloads/users.json",
+		"/C/Users/calle_000/AppData/Local/Temp/scp52877/home/fsekt/web/fysikalen.se/www/.htaccess",
+		"/F/Dropbox/Projects/Lovschema/data.txt",
+		"/F/Dropbox/Transfer/Descent 2nd Ed/Descent 2nd Ed - Campaign 2.txt",
+		"/E/Users/Calle/Documents/Skola/Högskola/Programmering/Grundläggande Programmering och Datalogi/p-uppgift/postkontor_hela.py",
+		"/E/Users/Calle/Documents/Skola/Högskola/Programmering/Grundläggande Programmering och Datalogi/p-uppgift/postkontor.py",
+		"/E/Users/Calle/Documents/Skola/Högskola/Programmering/Grundläggande Programmering och Datalogi/p-uppgift/postkontor_gui.py",
+		"/E/Users/Calle/Documents/Skola/Högskola/Programmering/Grundläggande Programmering och Datalogi/p-uppgift/postkontor_test.py",
+		"/C/Users/calle_000/AppData/Local/Temp/scp28306/afs/nada.kth.se/home/1/u17h6w71/Documents/kurser/datintro10/Datorintro - Lab 1",
+		"/C/Users/calle_000/AppData/Local/Temp/scp27263/afs/nada.kth.se/home/1/u17h6w71/Documents/kurser/cprog10/labb1/uppgift1/program.cpp",
+		"/C/Users/calle_000/AppData/Local/Temp/scp25122/afs/nada.kth.se/home/1/u17h6w71/public_html/.goutputstream-U6CHIV",
+		"/C/Users/calle_000/AppData/Local/Temp/scp24129/afs/nada.kth.se/home/1/u17h6w71/public_html/index.php",
+		"/E/Users/Calle/Downloads/se/se.txt",
+		"/F/Dropbox/Projects/SHBCategorizer/app.js",
+		"/C/Users/calle_000/AppData/Local/Microsoft/MSBuild/v4.0/Microsoft.Cpp.Win32.user.props",
+		"/C/Users/calle_000/AppData/Local/Microsoft/MSBuild/v4.0/Microsoft.Cpp.x64.user.props",
+		"/C/Program Files/nodejs/node_modules/npm/node_modules/node-gyp/gyp/pylib/gyp/MSVSVersion.py",
+		"/F/Dropbox/Projects/SHBCategorizer/package.json",
+		"/F/Dropbox/Projects/SHBCategorizer/TODO",
+		"/F/Dropbox/Projects/BotBattle/BotServer/views/error.jade",
+		"/F/Dropbox/Projects/BotBattle/BotServer/views/layout.jade",
+		"/F/Dropbox/Projects/SHBCategorizer/index.html",
+		"/F/Dropbox/Projects/SHBCategorizer/shb.js",
+		"/F/Dropbox/Projects/SHBCategorizer/bin/www",
+		"/E/Programming/libraries/boost/boost/archive/iterators/transform_width.hpp",
+		"/E/Programming/tools/LightTPD/conf/vhosts.conf",
+		"/E/Programming/tools/icobundle/README.txt",
+		"/E/Programming/Projects/EVEIGBEmulator/index.php",
+		"/F/Dropbox/Projects/BotBattle/BotServer/npm-debug.log",
+		"/F/Dropbox/Projects/BotBattle/BotServer/bin/www",
+		"/F/Dropbox/Projects/BotBattle/BotServer/package.json",
+		"/E/Programming/dependencies/v8/src/api.cc",
+		"/E/Programming/dependencies/v8/src/v8utils.cc",
+		"/E/Programming/dependencies/v8/src/v8.cc",
+		"/E/Programming/dependencies/v8/src/utils.cc",
+		"/E/Programming/dependencies/v8/src/isolate.cc",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/medium/judge/cryptoLib2.cpp",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/hard/contestant/cryptoLib3.h",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/hard/contestant/cryptoLib3.hpp",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/hard/contestant/CryptoLib3.scala",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/hard/contestant/crypto3.cpp",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/hard/contestant/CryptoLib3.java",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/hard/contestant/crypto3.c",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/hard/contestant/Crypto3.java",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/hard/contestant/Crypto3.scala",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/hard/contestant/cryptoLib3.cpp",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/hard/contestant/cryptoLib3.c",
+		"/F/Dropbox/Projects/Eve IGB Chrome/manifest.json",
+		"/F/Dropbox/Projects/Eve IGB Chrome/inject.js",
+		"/F/Dropbox/Projects/Eve IGB Chrome/igb.js",
+		"/F/Dropbox/Projects/Eve IGB Chrome/emulator.js",
+		"/F/Dropbox/Projects/Eve IGB Chrome/options.js",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/hard/judge/1.out",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/hard/judge/1.in",
+		"/F/Dropbox/Projects/Eve IGB Chrome/options.html",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/locks_cs_ma_tc/easy/contestant/locksLib1.cpp",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/locks_cs_ma_tc/easy/contestant/locksLib1.c",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/locks_cs_ma_tc/easy/contestant/testdata.in",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/dryrun_/hard/contestant/dryrunLib3.hpp",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/dryrun_/hard/contestant/dryrunLib3.c",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/dryrun_/hard/contestant/dryrunLib3.cpp",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/dryrun_/hard/contestant/dryrun3.cpp",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/dryrun_/hard/contestant/dryrunLib3.h",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/spy_ck/solutions/calle/Spy2.java",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/spy_ck/medium/contestant/SpyLib2.java",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/spy_ck/solutions/christian/spy2_ck.cpp",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/spy_ck/solutions/calle/testdata.in",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/spy_ck/medium/contestant/testdata.in",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/spy_ck/solutions/calle/SpyLib2.java",
+		"/C/Users/calle_000/AppData/Local/Temp/scp21955/storage/content/31/188531/strahattsfabriken.se/public_html/wordpress/wp-content/themes/strahattsfabriken/style.css",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/solution/calle/hard/crypto3.cpp",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/solution/calle/hard/crypto3.c",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/progress_overview.csv",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/README_easy.txt",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/crypto_is_jw_cs/hard/contestant/testdata.in",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/locks_cs_ma_tc/solution/calle/easy/correct/Locks1.scala",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/locks_cs_ma_tc/solution/calle/easy/correct/LocksLib1.scala",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/locks_cs_ma_tc/solution/calle/easy/correct/locks1.c",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/locks_cs_ma_tc/solution/calle/easy/correct/locksLib1.h",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/locks_cs_ma_tc/solution/calle/easy/correct/locksLib1.c",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/locks_cs_ma_tc/solution/calle/easy/correct/timingLib1.cpp",
+		"/F/Dropbox/Projects/hc2problems-2014/problemset/locks_cs_ma_tc/solution/calle/easy/correct/timingLib1.hpp",
+		"/E/Users/Calle/Documents/MSN Messenger Logs/jessica_k_f@hotmail.com (2).txt",
+		"/C/Users/calle_000/AppData/Local/Temp/scp51560/afs/nada.kth.se/misc/info/fsekt/maillistor/frum/f-cda.maillist",
+		"/E/Users/Calle/Downloads/reverse/logs/november 2005/amanda_favoriten@hotmail.com.txt",
+		"/E/Users/Calle/Downloads/reverse/decrypt.py",
+		"/E/Users/Calle/Downloads/reverse/logs/mackan_ahlberg@hotmail.com.txt",
+		"/E/Users/Calle/Downloads/reverse/logs/april 2006/bellismellis@hotmail.com.txt",
+		"/E/Users/Calle/Downloads/reverse/logs/april 2006/asal_90@hotmail.com.txt",
+		"/E/Users/Calle/Downloads/reverse/logs/april 2006/amanda_favoriten@hotmail.com.txt",
+		"/E/Users/Calle/Downloads/reverse/logs/frida_hansson@hotmail.com.txt",
+		"/E/Users/Calle/Downloads/reverse/logs/tmpdecrypt_5214.html",
+		"/E/Users/Calle/Downloads/reverse/logs/adamgloveus@hotmail.com.html",
+		"/E/Users/Calle/Downloads/reverse/logs/test.dat",
+		"/E/Users/Calle/Downloads/reverse/logs/tmpdecrypt_21ef.txt",
+		"/E/Users/Calle/Downloads/reverse/logs/tmpdecrypt_4438.txt",
+		"/E/Users/Calle/Downloads/reverse/logs/test.txt",
+		"/E/Users/Calle/Downloads/reverse/logs/test",
+		"/E/test.txt",
+		"/E/Users/Calle/Downloads/adam_brommaif@hotmail.com.ple",
+		"/E/Users/Calle/Downloads/test.txt"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"E:\\Programming\\dependencies\\v8\\src",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"preexec_fn",
+			"null",
+			"UncheckedCurrent",
+			"EnterIsolateIfNeeded",
+			"ErrorHandler",
+			"SetFatalErrorHandler",
+			"callback",
+			"exception_behavior",
+			"8401",
+			"13611",
+			"\\t",
+			" ",
+			"\\t",
+			"	",
+			"tabs",
+			"a",
+			"url",
+			" ",
+			"F",
+			"python",
+			"\\n",
+			", ",
+			", \\n",
+			"\\n",
+			" ",
+			"())",
+			"http://shared.mindstepmedia.se/",
+			"part",
+			"jonas",
+			"adler",
+			"&quot;",
+			"\\\\",
+			"\\'",
+			"\\\"",
+			"development.",
+			"\\),\\(",
+			"wpcs_settings",
+			"`",
+			"([0-9])\\.([0-9])",
+			".",
+			"  ",
+			"   [0-9]{4}-[0-9]{2}-[0-9]{2}",
+			"\\(([0-9\\.]*)\\)",
+			"^  .*",
+			"url('../",
+			"3306",
+			"right",
+			"../img/",
+			" ng-",
+			"app",
+			";*/\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			";",
+			"",
+			"  ",
+			"a,",
+			"host",
+			"host\nhost",
+			"host\n",
+			"",
+			"\\n",
+			"",
+			", ",
+			"",
+			"\n",
+			"",
+			"\"",
+			"\\",
+			"'",
+			"\"",
+			"dev.",
+			"\\),\\n\\(",
+			"",
+			"\\1,\\2",
+			",",
+			"\\t",
+			"",
+			"\\1",
+			"url('",
+			"../img/layout/",
+			" x-ng-"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 56.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 248.0,
+	"status_bar_visible": true
+}
