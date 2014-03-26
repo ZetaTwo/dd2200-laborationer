@@ -13,6 +13,17 @@
 
 \subsection{Förberedelsefrågor}
 
+\begin{enumerate}
+\item Processen med pid $1$ heter \emph{init}
+\item Barnprocesser ärver en kopia av föräldraprocessens alla miljövariabler vilket gör att man kan kommunicera från föräldraprocess till barnprocess med dem. Det går däremot inte att kommunicera åt andra hållet med dem.
+\item Anrop till \emph{sigaction} med \emph{SIGKILL} som argument resulterar i ett felmeddelande "Invalid argument". Man-sidan specificerar tydligt att man inte kan anropa \emph{sigaction} med bland annat \emph{SIGKILL} som argument och att det i så fall genererar felkoden \emph{EINVAL}. 
+\item Föräldraprocessen måste kunna veta PID till barnprocessen och får därför den från fork. Om barnprocessen behöver veta sin egen PID så kan den använda \emph{getpid} istället.
+\item 
+\item Anrop \emph{read} returnerar EOF om och endast om alla skriv-ändar av pipen är stängda. På motsvarande sätt returnerar \emph{write} genererar en \emph{SIGPIPE}-signal om alla läs-ändar är stängda. Om en process inte stänger den sida av pipen den inte använder kommer därför aldrig den andra sidan att kunna bli medveten om pipen har stängts från andra sidan.
+\item En process som vill veta om en process med ett visst PID fortfarande lever kan anropa \emph{kill(pid, 0)} och kontrollera om det resulterar i ett fel vilket i så fall betyder att processen inte längre existerar.
+\item Det finns 3 exit-koder i \emph{grep}. $0$ betyder att allt gick bra och att minst $1$ rad hittades. $1$ betyder att inget hittades och $2$ betyder att något gick fel.
+\end{enumerate}
+
 \section{Programbeskrivning}
 
 \subsection{Testkörning}

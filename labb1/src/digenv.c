@@ -5,90 +5,85 @@
 #include <unistd.h> /* definierar bland annat pipe() */
 #include <string.h>
 
-#define READ 0
-#define WRITE 1
+#define PIPE_READ 0
+#define PIPE_WRITE 1
 #define BUFFER_SIZE 4096
 
-int perform_step(int step, int in_pipe, char **envp);
+int perform_step(int step, int stdin_pipe, int argc, char **argv, char **envp);
 
 int main(int argc, char **argv, char **envp) {
-  /*Start recursion on first step*/
-  return perform_step(3, 0, envp);
+  perform_step(3, STDIN_FILENO, argc, argv, envp);
+  return 0;
 }
 
-int perform_step(int step, int in_pipe, char **envp) {
-  int return_value = 0;
-  int pipe_filedesc[2];
-  int childpid = 0;
+int perform_step(int step, int stdin_pipe, int argc, char **argv, char **envp) {
+  int stdout_pipe[2];
+  pid_t childpid = -1;
 
-  if(step > 0) { /*Don't fork on last step*/
-    /*Open pipes*/
-    return_value = pipe(pipe_filedesc);
-    if(return_value == -1) { fprintf(stderr, "Error opening pipe.\n"); /*TODO: Error*/ }
-
-    childpid = fork(); /*Fork process*/
-    if(childpid == -1) { fprintf(stderr, "Error forking in step %d.\n", step); /*TODO: Error*/ }
-
-    if(childpid == 0) { /*Runs in child process*/
-
-      /*Close write pipe*/
-      return_value = close(pipe_filedesc[WRITE]);
-      if(return_value == -1) { fprintf(stderr, "Error closing write pipe in step %d.\n", step); /*TODO: Error*/ }
-
-      /*Recurse*/
-      return perform_step(step-1, pipe_filedesc[READ], envp);
-
-    } else { /*Runs in parent process*/
-
-      /*Close read pipe*/
-      return_value = close(pipe_filedesc[READ]);
-      if(return_value == -1) { fprintf(stderr, "Error closing read pipe in step %d.\n", step); /*TODO: Error*/ }
-    }
+  /*Create pipe*/
+  if(step > 0) {
+    if(pipe(stdout_pipe) < 0) { perror("Error creating stdout pipe"); exit(1); }
   }
 
-  if(childpid != 0 || step == 0) {
+  /*Fork process*/
+  if((childpid = fork()) < 0) {
+    close(stdout_pipe[PIPE_WRITE]);
+    close(stdout_pipe[PIPE_READ]);
+    perror("Error forking"); exit(1);
+  }
 
-    char buffer[BUFFER_SIZE];
-    size_t readlen = 0;
-    size_t writelen = 0;
+  /*Child process execution*/
+  if(childpid == 0) {
 
+    /*Redirect read pipe to stdin*/
+    if(stdin_pipe != STDIN_FILENO) {
+      if(dup2(stdin_pipe, STDIN_FILENO) < 0) { perror("Error readirecting inpipe to STDIN"); exit(1); }
+    }
+
+    /*Redirect stdout to write pipe */
+    if(step > 0) {
+      if(dup2(stdout_pipe[PIPE_WRITE], STDOUT_FILENO) < 0) { perror("Error readirecting STDOUT to outpipe"); exit(1); }
+      if(close(stdout_pipe[PIPE_READ]) < 0) { perror("Error closing read pipe in child"); exit(1); }
+    } 
+
+    /*Perform work*/
     switch(step) {
       case 3:
-        for(; *envp != NULL; envp++) {
-          size_t envplen = strlen(*envp);
-          return_value = write(pipe_filedesc[WRITE], *envp, envplen);
-          if(return_value == -1) { fprintf(stderr, "Error writing to child process in step %d.\n", step); /*TODO: Error*/ }
-          return_value = write(pipe_filedesc[WRITE], "\n", 1);
-          if(return_value == -1) { fprintf(stderr, "Error writing to child process in step %d.\n", step); /*TODO: Error*/ }
-        }  
-      break;
-
+        execlp("printenv", "printenv", NULL);
+        perror("Error executing printenv");
+        break;
+      case 2:
+        execvp("grep", argv);
+        perror("Error executing grep");
+        break;
+      case 1:
+        execlp("sort", "sort", NULL);
+        perror("Error executing sort");
+        break;
       case 0:
-        
-        while((readlen = read(in_pipe, buffer, BUFFER_SIZE)) > 0) {
-          printf(buffer);          
-        }
-
-        if(readlen == -1) { fprintf(stderr, "Error reading from parent process in step %d.\n", step); /*TODO: Error*/ }
-      break;
-      default:       
-        while((readlen = read(in_pipe, buffer, BUFFER_SIZE)) > 0) {
-          writelen = write(pipe_filedesc[WRITE], buffer, BUFFER_SIZE);
-          if(writelen == -1 ) { fprintf(stderr, "Error writing to child process in step %d.\n", step); /*TODO: Error*/ };
-        }
-       
-        if(readlen == -1) { fprintf(stderr, "Error reading from parent process in step %d.\n", step); /*TODO: Error*/ }
-      break;
+        execlp("less", "less", NULL);
+        perror("Error executing sort");
+        break;
+      default:
+        break;
     }
+    exit(1);
+
+  /*Parent process execution*/
+  } else {
+    
+    if(step > 0) {
+
+      /*Close stdout write pipe*/
+      if(close(stdout_pipe[PIPE_WRITE]) < 0) { perror("Error closing stdout read pipe in parent"); exit(1); }
+
+      /*Perform next step*/
+      if(argc == 1 && step == 3) { step--; }
+      perform_step(step-1, stdout_pipe[PIPE_READ], argc, argv, envp);
+    }
+
+    wait();
   }
 
-  /*Done writing, close pipe*/
-  return_value = close(pipe_filedesc[WRITE]);
-  if(return_value == -1) { fprintf(stderr, "Error closing write pipe in step %d.\n", step); /*TODO: Error*/ }
-
-  /*If we have children, wait for them*/
-  if(step > 0) {
-    return_value = wait();
-    if(return_value == -1) { fprintf(stderr, "Error waiting for child process in step %d.\n", step); /*TODO: Error*/ }
-  }
+  return 0;
 }

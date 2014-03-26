@@ -5,31 +5,43 @@
 		[
 			[
 				"read",
-				"readlen"
+				"read_pipe"
 			],
 			[
-				"write",
-				"writelen"
-			],
-			[
-				"in",
-				"in_pipe"
-			],
-			[
-				"pipe",
-				"pipe_filedesc"
-			],
-			[
-				"enp",
-				"envplen"
+				"pri",
+				"printf	printf …"
 			],
 			[
 				"en",
 				"envp"
 			],
 			[
+				"arg",
+				"argv"
+			],
+			[
+				"ex",
+				"exec"
+			],
+			[
+				"per",
+				"perror"
+			],
+			[
+				"print",
+				"printenv"
+			],
+			[
+				"PIPE",
+				"PIPE_READ"
+			],
+			[
 				"pip",
 				"pipe_filedesc"
+			],
+			[
+				"ch",
+				"childpid"
 			],
 			[
 				"retur",
@@ -72,6 +84,10 @@
 				"background"
 			],
 			[
+				"in",
+				"inline-block"
+			],
+			[
 				"no",
 				"nowrap"
 			],
@@ -112,16 +128,18 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Calle/AppData/Roaming/Sublime Text 2/Packages/User/C.sublime-build",
-		"/C/Users/Calle/Dropbox/Skola/kth/os/labbar/.gitignore",
 		"/C/Users/Calle/Dropbox/Skola/kth/os/labbar/labb1/src/digenv.c",
-		"/C/Users/Calle/Dropbox/Skola/kth/os/labbar/labb1/notes.txt",
-		"/C/Users/Calle/AppData/Roaming/Sublime Text 2/Packages/User/C.sublime-settings",
+		"/C/Users/Calle/Dropbox/Skola/kth/os/labbar/labb1.sublime-project",
+		"/F/Dropbox/Skola/kth/os/labbar/labb1/notes.txt",
 		"/F/Dropbox/Skola/kth/os/labbar/labb1/src/digenv.c",
+		"/F/Dropbox/Skola/kth/os/labbar/labb1/src/sigkill.c",
+		"/F/Dropbox/Skola/kth/os/labbar/src/digenv.c",
+		"/F/Dropbox/Skola/kth/os/labbar/labb1.sublime-project",
+		"/F/Dropbox/Skola/kth/os/labbar/labb1/labb1.sublime-workspace",
+		"/C/Users/calle_000/AppData/Roaming/Sublime Text 2/Packages/User/C.sublime-build",
 		"/C/Users/calle_000/AppData/Local/Temp/scp03186/afs/nada.kth.se/misc/info/fsekt/maillistor/fkm/fkm.maillist",
 		"/F/Dropbox/Skola/kth/os/labbar/labb1/src/example1.c",
 		"/F/Dropbox/Skola/kth/os/labbar/labb1/src/example2.c",
-		"/C/Users/calle_000/AppData/Roaming/Sublime Text 2/Packages/User/C.sublime-build",
 		"/C/Users/calle_000/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
 		"/C/Users/calle_000/AppData/Roaming/Sublime Text 2/Packages/User/my_exec.py",
 		"/C/Users/calle_000/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
@@ -237,9 +255,7 @@
 		"/E/Users/Calle/Downloads/reverse/logs/adamgloveus@hotmail.com.html",
 		"/E/Users/Calle/Downloads/reverse/logs/test.dat",
 		"/E/Users/Calle/Downloads/reverse/logs/tmpdecrypt_21ef.txt",
-		"/E/Users/Calle/Downloads/reverse/logs/tmpdecrypt_4438.txt",
-		"/E/Users/Calle/Downloads/reverse/logs/test.txt",
-		"/E/Users/Calle/Downloads/reverse/logs/test"
+		"/E/Users/Calle/Downloads/reverse/logs/tmpdecrypt_4438.txt"
 	],
 	"find":
 	{
@@ -394,7 +410,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 166.0
+		"height": 241.0
 	},
 	"replace":
 	{
