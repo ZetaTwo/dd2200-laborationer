@@ -4,44 +4,12 @@
 		"selected_items":
 		[
 			[
-				"read",
-				"read_pipe"
-			],
-			[
-				"pri",
-				"printf	printf …"
-			],
-			[
-				"en",
-				"envp"
-			],
-			[
-				"arg",
-				"argv"
-			],
-			[
-				"ex",
-				"exec"
-			],
-			[
-				"per",
-				"perror"
-			],
-			[
-				"print",
-				"printenv"
-			],
-			[
-				"PIPE",
-				"PIPE_READ"
+				"STD",
+				"STDIN_FILENO"
 			],
 			[
 				"pip",
 				"pipe_filedesc"
-			],
-			[
-				"ch",
-				"childpid"
 			],
 			[
 				"retur",
@@ -54,6 +22,10 @@
 			[
 				"perf",
 				"perform_step"
+			],
+			[
+				"read",
+				"readObject"
 			],
 			[
 				"pa",
@@ -128,10 +100,8 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Calle/Dropbox/Skola/kth/os/labbar/labb1/src/digenv.c",
-		"/C/Users/Calle/Dropbox/Skola/kth/os/labbar/labb1.sublime-project",
-		"/F/Dropbox/Skola/kth/os/labbar/labb1/notes.txt",
 		"/F/Dropbox/Skola/kth/os/labbar/labb1/src/digenv.c",
+		"/F/Dropbox/Skola/kth/os/labbar/labb1/notes.txt",
 		"/F/Dropbox/Skola/kth/os/labbar/labb1/src/sigkill.c",
 		"/F/Dropbox/Skola/kth/os/labbar/src/digenv.c",
 		"/F/Dropbox/Skola/kth/os/labbar/labb1.sublime-project",
@@ -255,7 +225,9 @@
 		"/E/Users/Calle/Downloads/reverse/logs/adamgloveus@hotmail.com.html",
 		"/E/Users/Calle/Downloads/reverse/logs/test.dat",
 		"/E/Users/Calle/Downloads/reverse/logs/tmpdecrypt_21ef.txt",
-		"/E/Users/Calle/Downloads/reverse/logs/tmpdecrypt_4438.txt"
+		"/E/Users/Calle/Downloads/reverse/logs/tmpdecrypt_4438.txt",
+		"/E/Users/Calle/Downloads/reverse/logs/test.txt",
+		"/E/Users/Calle/Downloads/reverse/logs/test"
 	],
 	"find":
 	{
@@ -275,6 +247,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			");\n",
 			"preexec_fn",
 			"null",
 			"UncheckedCurrent",
@@ -410,7 +383,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 241.0
+		"height": 354.0
 	},
 	"replace":
 	{
