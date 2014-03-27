@@ -9,8 +9,9 @@
 \usepackage{color}
 \usepackage{tikz}
 \usetikzlibrary{arrows}
+\usepackage{hyperref}
 
-\title{DD2206 - Operativsystem \\ Laboration 1 \\ Digenv - processkommunikation med pipes  v1.1 \\ Period 1, läsår 2014}
+\title{DD2200 - Operativsystem \\ Laboration 1 \\ Digenv - processkommunikation med pipes  v1.1 \\ Period 1, läsår 2014}
 \author{Carl Svensson, F-10 \\ 910414-1412 \\ carlsven@kth.se}
 \date{}
 
@@ -144,11 +145,25 @@ $ digenv.exe COM
 
 \clearpage
 \section{Källkod}
+Källkoden går att läsa nedan. Den går också att ladda ner från Github\footnote{\url{https://github.com/ZetaTwo/dd2200-laborationer/blob/master/labb1/src/digenv.c}} och kompileras med "gcc -Wall digenv.c"
 \lstinputlisting[style=cstyle]{../src/digenv.c}
 \clearpage
 
 \section{Arbetsgång och Utvärdering}
 
+Labben och rapporten har tillsammans tagit ca. 8 timmar. Materialet som fanns att tillgå var rätt bra. Däremot känns det som att det finns ett stort överlapp mellan innehållet i de olika labb-PM och det allmänna labb-PM:et. Jag har blivit mycket bättre införstådd i de systemanrop som används och hur pipes och exec fungerar.
+
+Jag skrev i stora drag fyra versioner av koden innan jag blev nöjd och allt fungerade bra. I den första versionen förstod jag inte att vi skulle använda exec för att utföre respektive delsteg utan började titta på hur man kunde implementera de olika delstegen. Detta övergav jag rätt snabbt då jag insåg att det inte var tanken. Den andra versionen baserades på att varje process forkade en barnprocess i ett led. Alltså att den första processen forkade och körde printenv, den barnprocessen forkade i sin tur och körde grep, etc. Problemet här var då att den första processen inte riktigt kunde veta när den sista processen var klar. Den tredje versionen använde istället en föräldraprocess som forkade flera gånger med hjälp av en rekursiv funktion. När detta fungerade och uppfyllde kraven för labben så snyggade jag till den och skrev den fjärde och sista versionen som baserades på en loop istället för rekursion. Jag skrev mer eller mindre om tail-rekursionen som en loop.
+
+Jag skulle säga att materialet är bra men överlappet gör att man ibland tappar fokus när man läser "det där har jag redan läst" så att man riskerar att missa saker. Det skulle kanske vara bra att flytta ut mer material till ett kompendium om systemanrop, etc. som är ett förkunskapskrav för både labb 1 och 2.
+
+Gällande såvrighet så är jag rätt bekant med C (egentligen C++) så den biten var inte så farlig men vissa systemanrop och att strukturera det bra var lite småklurigt ändå. Kortfattat:
+
+\begin{itemize}
+\item Labb-PM: 3
+\item Svårighetsgrad: 3
+\item Lärorikhet: 4
+\end{itemize}
 
 
 \end{document}
