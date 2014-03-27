@@ -6,3 +6,7 @@
 *.log
 *.synctex.gz
 *.pdf
+*.dvi
+
+#Sublime
+*.sublime-*
