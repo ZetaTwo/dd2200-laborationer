@@ -7,9 +7,6 @@
 #include <limits.h>
 
 #include "../include/command.h"
-#include "../include/timer.h"
-
-#define STATISTICS
 
 int change_working_directory(struct command *cmd);
 

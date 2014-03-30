@@ -1,10 +1,13 @@
 #include "../include/command.h"
+#include "../include/timer.h"
 
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+
+#define STATISTICS
 
 int init_command(struct command *cmd) {
   cmd->max_len = STRING_LENGTH;
