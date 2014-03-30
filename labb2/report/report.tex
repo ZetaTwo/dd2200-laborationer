@@ -65,24 +65,33 @@
 
 \section{Problembeskrivning}
 
-
+Laborationen går ut på att skriva ett litet skal för att köra kommandon. Skalet ska ha två inbygda kommandon: exit och cd. Exit avslutar skalet och cd låter användaren byta den aktuella katalogen. Alla andra kommandon körs genom att skapa en barnprocess som kör det aktuella programmet. Program ska gå att starta både i för- och bakgrunden och användaren ska meddelas om förgrundsprogrammens körtid. Användaren ska också meddelas när bakgrundsprocesser avslutas och detta ska göras vid nästa kommandoinmatning. Vid keyboard-interrupts så ska enbart den barnprocess som körs i förgrunden avslutas och inte själva skalet.
 
 \subsection{Förberedelsefrågor}
 
 \begin{enumerate}
-\item 
+\item Till att börja med är det mycket lättare att utnyttja redan existerande program utan att det blir ett problem att komma tillbaka till kommandoinmatningen. Det blir också mycket lättare att återställa till ursprungsläget när processen är klar. Om processen t.ex. dirigerar om \emph{stdin} eller \emph{stdout} så slängs dessa ändringar bort när processen avslutar. Dessutom så skyddar det lite mot minnesläckor. Om ett program som körs i en separat process läcker minne så kommer det ändå städas undan när processen avslutas vilket antagligen är mycket tidigare än när hela skalet avslutas.
+\item Processen kommer att ligga kvar och ta upp resurser men inte längre köras. Den kommar att vara en s.k. zombie-process. Det är därför viktigt att anropa \emph{wait()} så att alla resurser frigörs ordentligt.
+\item \emph{SIGSEGV} står för "segmentation violation" vilket oftast kallas för "segmentation fault".
+\item Från ett designperspektiv så är det rimligt att operativsystemet måste kunna avsluta en process oavsett om processen själv vill det eller inte. Från programmerarens perspektiv så går det helt enkelt inte att anropa \emph{sigaction} med \emph{SIGKILL} som argument.
+\item "void (*disp)(int)" är en variabel med namnet "disp" som är en funktionspekare till en funktion som tar en int som argument och inte returnerar något (void).
+\item Från man-sidan till \emph{sigset}: "...compatibility interface..." och "new applications should use ... \emph{sigaction(2)}, \emph{sigprocmask(2)}" vilket då antagligen är de funktioner som \emph{sigset(3)} själv använder.
+\item Installera en egen signalhanterare som tar hand om signalen \emph{SIGINT} vilket är "keyboard interrupt" och ignorerar eller skickar vidare den.
+\item Varje process har sin egen working directory så när \emph{cd} körs i miniShell-processen så påverkar inte det working directory i processen som startade miniShell. Det gör att när sedan miniShell avslutas med "exit" så återgår körningen till den startande processen vars working directory är oförändrad.
 \end{enumerate}
 
 \section{Programbeskrivning}
 
-
+%Loop, inläsning, tokenisering, körning
+%tidtagning, signalhantering
+%fork, exec, wait
 
 \subsection{Testkörning}
 
 \begin{lstlisting}
-$ digenv.exe HOME
+$ smallshell.exe
 
-> HOME=/home/calle_000
+> TEST
 \end{lstlisting}
 
 

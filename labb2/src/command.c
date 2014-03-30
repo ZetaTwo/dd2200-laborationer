@@ -9,6 +9,10 @@
 
 #define STATISTICS
 
+void install_signal_handler(struct sigaction *old);
+void restore_signal_handler(struct sigaction *old);
+void signal_handler(int, siginfo_t *, void *);
+
 int init_command(struct command *cmd) {
   cmd->max_len = STRING_LENGTH;
   cmd->text = (char *)malloc(sizeof(char)*cmd->max_len);
@@ -100,7 +104,8 @@ int parse_command(struct command *cmd) {
 }
 
 int execute_command(struct command *cmd) {
-  int childpid;
+  pid_t childpid;
+
   if((childpid = fork()) < 0) { perror("Error forking process"); return -1; }
 
   if(childpid == 0) {
@@ -108,6 +113,9 @@ int execute_command(struct command *cmd) {
     perror("Error executing child process");
     exit(1);
   } else {
+    /* Ignore SIGINT in parent*/
+    struct sigaction old;
+    install_signal_handler(&old);
 
 #ifdef STATISTICS
     printf("Spawned foreground process pid: %u\n", childpid);
@@ -115,7 +123,14 @@ int execute_command(struct command *cmd) {
     start_timer(&process_timer);
 #endif    
 
-    wait(NULL);
+    /* Wait until process finishes completely */
+    int status;
+    do {
+      waitpid(childpid, &status, WUNTRACED | WCONTINUED);
+    } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+
+    /* Restore SIGINT handling on child termination */
+    restore_signal_handler(&old);
 
 #ifdef STATISTICS
     printf("Foreground process %u terminated\n", childpid);
@@ -126,4 +141,25 @@ int execute_command(struct command *cmd) {
 
   return 0;
 
+}
+
+void install_signal_handler(struct sigaction *old) {
+  struct sigaction action;
+  action.sa_sigaction = &signal_handler;
+  action.sa_mask = 0;
+  action.sa_flags = SA_SIGINFO;
+
+  printf("Installing\n");
+  sigaction(SIGINT, &action, old);
+  sigaction(SIGCHLD, &action, old);
+}
+
+void restore_signal_handler(struct sigaction *old) {
+  printf("Restoring\n");
+  sigaction(SIGINT, old, NULL);
+  sigaction(SIGCHLD, old, NULL);
+}
+
+void signal_handler(int signal, siginfo_t *info, void *context) {
+  printf("Signal: %d\n", signal);
 }
