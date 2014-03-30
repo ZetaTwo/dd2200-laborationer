@@ -1,0 +1,106 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{hyperref}
+
+\title{DD2200 - Operativsystem \\ Laboration 2 \\ Small-Shell v2.51 för UNIX \\ Period 1, läsår 2014}
+\author{Carl Svensson, F-10 \\ 910414-1412 \\ carlsven@kth.se}
+\date{}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstdefinestyle{cstyle}{%
+  language=C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\color{mauve},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
+
+\lstdefinestyle{bashstyle}{%
+  language=C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\color{mauve},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
+
+\lstset{
+  style=bashstyle
+}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\clearpage
+
+\section{Problembeskrivning}
+
+
+
+\subsection{Förberedelsefrågor}
+
+\begin{enumerate}
+\item 
+\end{enumerate}
+
+\section{Programbeskrivning}
+
+
+
+\subsection{Testkörning}
+
+\begin{lstlisting}
+$ digenv.exe HOME
+
+> HOME=/home/calle_000
+\end{lstlisting}
+
+
+\clearpage
+\section{Källkod}
+Källkoden går att läsa nedan. Den går också att ladda ner från Github\footnote{\url{https://github.com/ZetaTwo/dd2200-laborationer/tree/master/labb2}} och kompileras med "make"
+
+\subsection{Smallshell.c}
+\lstinputlisting[style=cstyle]{../src/smallshell.c}
+\subsection{Timer.c}
+\lstinputlisting[style=cstyle]{../src/timer.c}
+\subsection{Command.c}
+\lstinputlisting[style=cstyle]{../src/command.c}
+\clearpage
+
+\section{Arbetsgång och Utvärdering}
+
+
+
+
+\end{document}
