@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 #define STRING_LENGTH 80
-#define TOKENS_LENGTH 1
+#define TOKENS_LENGTH 4
 
 struct command {
   char *text;
@@ -24,6 +24,5 @@ int free_command(struct command *cmd);
 int read_command(struct command *cmd);
 int parse_command(struct command *cmd);
 
-int execute_command(struct command *cmd);
 
 #endif
