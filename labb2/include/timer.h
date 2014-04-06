@@ -1,3 +1,10 @@
+/* timer
+ *
+ * This module implements a simple timer
+ * for clocking the running time of
+ * foreground processes
+ */
+
 #ifndef __TIMER__
 #define __TIMER__
 

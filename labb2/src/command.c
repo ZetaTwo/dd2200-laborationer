@@ -1,3 +1,10 @@
+/* command
+ *
+ * This module implements the command structure
+ * which stores information about the inputed
+ * command and functions for inputing and parsing it
+ */
+
 #include "../include/command.h"
 
 #include <stdio.h>
@@ -6,11 +13,19 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-int init_command(struct command *cmd) {
+/** init_command
+ *
+ * Sets up the command structure for usage.
+ */
+int init_command(
+  struct command *cmd) { /* IN: The command structure to prepare for usage */
+
+  /* Allocate an initial chunk of memory for the text. */
   cmd->max_len = STRING_LENGTH;
   cmd->text = (char *)malloc(sizeof(char)*cmd->max_len);
   cmd->len = 0;
 
+  /* Allocate an initial chunk of memory for the tokens. */
   cmd->max_tokens = TOKENS_LENGTH;
   cmd->len_tokens = 0;
   cmd->tokens = (char **)malloc(sizeof(char *)*cmd->max_tokens);
@@ -19,7 +34,14 @@ int init_command(struct command *cmd) {
   return 0;
 }
 
-int free_command(struct command *cmd) {
+/** free_command
+ *
+ * Frees up the resources used by the command.
+ */
+int free_command(
+  struct command *cmd) { /* IN: The command structure to free up. */
+
+  /* Free the texts and array */
   free(cmd->text);
   free(cmd->token_text);
   free(cmd->tokens);
@@ -27,7 +49,14 @@ int free_command(struct command *cmd) {
   return 0;
 }
 
-int read_command(struct command *cmd) {
+/** read_command
+ *
+ * Reads a new command from the standard input
+ * and saves it in cmd.
+ */
+int read_command(
+  struct command *cmd) { /* IN: The command structure to save the command in. */
+
   cmd->len = 0;
   int c;
   int prefix = 1;
@@ -55,7 +84,13 @@ int read_command(struct command *cmd) {
   return cmd->len;
 }
 
-int parse_command(struct command *cmd) {
+/** parse_command
+ *
+ * Parses the command read by read_command.
+ */
+int parse_command(
+  struct command *cmd) { /* IN: The command to parse. */
+
   /* Reset tokens length */
   cmd->len_tokens = 0;
   cmd->bg = 0;
@@ -76,7 +111,7 @@ int parse_command(struct command *cmd) {
      *
      */
     if(strcmp("&", token) == 0) {
-      cmd->bg = 13;
+      cmd->bg = 1;
       break;
     }
 
