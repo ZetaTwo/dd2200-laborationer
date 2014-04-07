@@ -11,7 +11,7 @@
 \usetikzlibrary{arrows}
 \usepackage{hyperref}
 
-\title{DD2200 - Operativsystem \\ Laboration 2 \\ Small-Shell v2.51 för UNIX \\ Period 1, läsår 2014}
+\title{DD2200 - Operativsystem \\ Laboration 2 \\ Small-Shell v2.51 för UNIX \\ Period 4, läsår 2014}
 \author{Carl Svensson, F-10 \\ 910414-1412 \\ carlsven@kth.se}
 \date{}
 
@@ -82,16 +82,64 @@ Laborationen går ut på att skriva ett litet skal för att köra kommandon. Ska
 
 \section{Programbeskrivning}
 
-%Loop, inläsning, tokenisering, körning
-%tidtagning, signalhantering
-%fork, exec, wait
+Programmet kör en huvudloop. Varje varv av loopen läser in ett kommando från användaren. Om kommandot är \emph{exit} så avslutas loopen och därmed programmet. Om det är \emph{cd} så försöker programmet byta den nuvarande arbetskatalogen. I annat fall så försöker programmet starta det program som användaren matat in med tillhörande argument. Detta görs genom att programmet \emph{fork}ar och barnprocessen använder \emph{exec} för att köra kommandot. Om det är en förgrundsprocess så tar förälderprogrammet tid på hur lång tid barnprocessen körs och väntar tills dess att den kört klart. Om det är en bakgrundsprocess så läggs process-ID:t till listan över nuvarande bakgrundsprocesser.
+Efter att ett kommando har körts så gås listan över bakgrundsprocesser igenom för att kontrollera om någon eller några av dessa har kört klart. Detta meddelas i så fall och plockas då bort från listan.
 
+\clearpage
 \subsection{Testkörning}
 
 \begin{lstlisting}
-$ smallshell.exe
+/cygdrive/f/Dropbox/Skola/kth/os/labbar/labb2> cd ..
+/cygdrive/f/Dropbox/Skola/kth/os/labbar> ls
+Installing
+Spawned foreground process pid: 2836
+labb1                  labb1.sublime-workspace  labb3
+labb1.sublime-project  labb2                    labb-pm.pdf
+Restoring
+Foreground process 2836 terminated
+Wallclock time: 6.460000 ms.
+/cygdrive/f/Dropbox/Skola/kth/os/labbar> ping google.com
+Installing
+Spawned foreground process pid: 7648
 
-> TEST
+Pinging google.com [173.194.32.8] with 32 bytes of data:
+Reply from 173.194.32.8: bytes=32 time=1ms TTL=55
+...
+Reply from 173.194.32.8: bytes=32 time=1ms TTL=55
+
+Ping statistics for 173.194.32.8:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 1ms, Maximum = 1ms, Average = 1ms
+Restoring
+Foreground process 7648 terminated
+Wallclock time: 3023.795000 ms.
+/cygdrive/f/Dropbox/Skola/kth/os/labbar> ping google.com &
+Installing
+Spawned background process pid: 2384
+Restoring
+Background process 2384 terminated
+/cygdrive/f/Dropbox/Skola/kth/os/labbar>
+Pinging google.com [173.194.32.8] with 32 bytes of data:
+Reply from 173.194.32.8: bytes=32 time=1ms TTL=55
+ls
+Installing
+Spawned foreground process pid: 5072
+labb1  labb1.sublime-project  labb1.sublime-workspace  labb2  labb3  labb-pm.pdf
+Restoring
+Foreground process 5072 terminated
+Wallclock time: 6.791000 ms.
+/cygdrive/f/Dropbox/Skola/kth/os/labbar> Reply from 173.194.32.8: bytes=32 time=1ms TTL=55
+Reply from 173.194.32.8: bytes=32 time=1ms TTL=55
+Reply from 173.194.32.8: bytes=32 time=1ms TTL=55
+
+Ping statistics for 173.194.32.8:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 1ms, Maximum = 1ms, Average = 1ms
+
+/cygdrive/f/Dropbox/Skola/kth/os/labbar>
+
 \end{lstlisting}
 
 
@@ -111,6 +159,25 @@ Källkoden går att läsa nedan. Den går också att ladda ner från Github\foot
 
 \section{Arbetsgång och Utvärdering}
 
+Notera: Vissa saker jag skriver här är i stort sett samma sak som i labb 1.
+
+Labben och rapporten har tillsammans tagit ca. 7 timmar. Materialet som fanns att tillgå var rätt bra. Däremot känns det som att det finns ett stort överlapp mellan innehållet i de olika labb-PM och det allmänna labb-PM:et. Jag har blivit mycket bättre införstådd i de systemanrop som används och hur signaler, fork och exec fungerar.
+
+Mitt arbetssätt gick i stora drag till enligt följande. Jag började med att skapa funktioner för att läsa in och bearbeta ett kommando och lägga in detta i en loop. Där implementerades sedan switchen som väljer vad som ska göras med kommandot. Exit-funktionen implemnterades trivialt med ett \emph{break}.
+Sedan skapade jag funktionen som byter arbetskatalog. Här behövde jag ändra lite i hur jag bearbetar kommandon så att jag behåller med den "tokeniserade" och ursprungliga texten eftersom jag ville kunna göra \emph{cd} med kataloger som innehöll mellanslag. Det behövdes även göras skillnad på sökvägar som börjar med "/" och övriga sökvägar.
+Efter detta implementerade jag själva kärnan i programmet, dvs den del som \emph{fork}ar och kör kommandon. Här utgick jag mycket från kunskaperna i labb 1 och det gick därför mycket snabbt att implementera.
+Jag la sedan till signalhanteraren som gjorde att signaler om avslut endast berörde barnprocessen om denna kördes.
+Slutligen implementerade jag en enkelt länkad lista som höll koll på bakgrundsprocesser och att denna kollades igenom efter varje kört kommando.
+
+Jag skulle säga att materialet är bra men överlappet gör att man ibland tappar fokus när man läser "det där har jag redan läst" så att man riskerar att missa saker. Det skulle kanske vara bra att flytta ut mer material till ett kompendium om systemanrop, etc. som är ett förkunskapskrav för både labb 1 och 2.
+
+Gällande såvrighet så är jag rätt bekant med C (egentligen C++) så den biten var inte så farlig men vissa systemanrop och att strukturera det bra var lite småklurigt ändå. Kortfattat:
+
+\begin{itemize}
+\item Labb-PM: 3
+\item Svårighetsgrad: 3
+\item Lärorikhet: 4
+\end{itemize}
 
 
 
