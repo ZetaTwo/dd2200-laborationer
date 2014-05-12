@@ -98,34 +98,34 @@ För att testa korrektheten testades implementationen med de givna testerna som 
 
 För att sedan mäta prestandan så kördes mina två implementationer samt systemets med testprogrammet som hittas i källkodsavsnittet. Programmet allokerar, frigör och omallokerar slumpmässigt stora block av minne. Varje körning gjordes 10 gånger där programmet kördes med 1, 10, 100, 1000, 10000 resp. 100000 iterationer. Detta upprepades även med 0\%, 10\%, 20\%, 30\%, 40\% samt 50\% reallokeringsanrop. Resultaten visas i graferna nedan på logaritmerade skalor.
 
-Som man kan se så påverkade inte andelen realloc resultatet märkbart. Detta är inte så förvånande då det bara är två anrop till malloc() respektive free() med lite extra kontroller.
+Som man kan se i figur \ref{fig:my1}, \ref{fig:my2} och \ref{fig:stock} så påverkade inte andelen realloc resultatet märkbart. Detta är inte så förvånande då det bara är två anrop till malloc() respektive free() med lite extra kontroller.
 
-Vi ser även i jämförelsen att first-fit och best-fit presterade ungefär lika bra men att de båda presterade något sämre än systemets implementation.
+Vi ser även i jämförelsen i figur \ref{fig:comparison} att first-fit och best-fit presterade ungefär lika bra men att de båda presterade något sämre än systemets implementation.
 
 \clearpage
 
 \begin{figure}
 \includegraphics[scale=0.7]{../results/my1.eps}
 \caption{Testkörning av min malloc() med first-fit och olika grader av realloc.}
-\label{fig:digraph}
+\label{fig:my1}
 \end{figure}
 
 \begin{figure}
 \includegraphics[scale=0.7]{../results/my2.eps}
 \caption{Testkörning av min malloc() med best-fit och olika grader av realloc.}
-\label{fig:digraph}
+\label{fig:my2}
 \end{figure}
 
 \begin{figure}
 \includegraphics[scale=0.7]{../results/ref.eps}
 \caption{Testkörning av systemets malloc() och olika grader av realloc.}
-\label{fig:digraph}
+\label{fig:stock}
 \end{figure}
 
 \begin{figure}
 \includegraphics[scale=0.7]{../results/comparison.eps}
 \caption{Jämförelse mellan de tre implementationerna vid 50\% realloc.}
-\label{fig:digraph}
+\label{fig:comparison}
 \end{figure}
 
 \begin{lstlisting}
@@ -147,14 +147,18 @@ Källkoden går att läsa nedan. Den går också att ladda ner från Github\foot
 
 \section{Arbetsgång och Utvärdering}
 
-TODO
+Jag började med att läsa igenom uppgiften, referensmalloc-koden och svara på frågorna. Där fick jag en ganska bra uppfattning om hur jag ville lösa problemet. Jag implementerade den länkade listan med de tre funktionerna.
+
+I början hade jag en hel del problem med att jag rörde ihop enheter (antal bytes, antal block och antal sidor) vilket ställde till en del märkliga problem. Jag hade också problem med att jag först lät bli att göra block-headern $2^n$ byte stor vilket sen gjorde storleksberäkningarna, speciellt vid ihopslagning krångliga. Jag la sedan till starkare kontroller i form av att kontrollera att pekare ligger i rätt område och kontrollvärden i minnesblocken. Ett sista problem jag brottades en del med var att när jag slog på optimeringar i GCC så hamnade malloc() i en oändlig loop. Jag lyckades till slut lösa det. Det hade något att göra med att någon del av loopen hade optimerats bort på grund av hur den tyckte att den globala variabeln som innehöll listan hanterades.
+
+Slutligen prestandatestades programmet. Jag skrev ett litet program som allokerar och omallokerar minne slumpat. Detta kördes med min implementation med både first-fit och best-fit samt systemets implementation.
+
+Jag tycker att labb-PM och extramaterial var bra och tydliga. Tyvärr tycker jag att man lärde sig ganska lite i förhållande till arbetsbördan. Visserligen så är det ju nyttigt att se alla småproblem man stöter på vilket jag antar är mycket av meningen med labben men att debugga så pass lågnivå-kod är inte så roligt.
 
 \begin{itemize}
-\item Labb-PM: X
-\item Svårighetsgrad: X
-\item Lärorikhet: X
+\item Labb-PM: 4
+\item Svårighetsgrad: 4
+\item Lärorikhet: 3
 \end{itemize}
-
-
 
 \end{document}

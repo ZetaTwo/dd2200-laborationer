@@ -8,7 +8,6 @@ void *blocks[NUM_BLOCKS];
 
 int main(int argc, char **argv) {
   /* Set up benchmark */
-  /*srand(0xD15EA5E);*/ /* Predictable "randomness" */
   unsigned long iterations, rechance, i;
   int action, target, size;
 
