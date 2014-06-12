@@ -98,11 +98,15 @@ static Block * mapunits(unsigned int nunits) {
   endHeap();
 #endif
 
+#ifdef MMAP
   /* memory = PAGE_SIZE * (ceil(nunits/PAGE_SIZE) + 1) */
   npages = ((nunits*sizeof(Block))-1)/PAGE_SIZE + 1;
   blockmem = mmap(NULL, npages * PAGE_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
   nunits = (npages * PAGE_SIZE)/sizeof(Block);
   __endHeap += npages * PAGE_SIZE;
+#else
+  blockmem = sbrk(nunits*sizeof(Block));
+#endif
 
   /* Check that we got the memory */
   if(blockmem == (void *) -1) {

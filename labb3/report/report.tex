@@ -96,36 +96,46 @@ När realloc() anropas körs först malloc() följt av memcpy() och free(). Unde
 
 För att testa korrektheten testades implementationen med de givna testerna som kördes ett flertal gånger och klarade samtliga tester, inklusive de "avancerade".
 
-För att sedan mäta prestandan så kördes mina två implementationer samt systemets med testprogrammet som hittas i källkodsavsnittet. Programmet allokerar, frigör och omallokerar slumpmässigt stora block av minne. Varje körning gjordes 10 gånger där programmet kördes med 1, 10, 100, 1000, 10000 resp. 100000 iterationer. Detta upprepades även med 0\%, 10\%, 20\%, 30\%, 40\% samt 50\% reallokeringsanrop. Resultaten visas i graferna nedan på logaritmerade skalor.
+För att sedan mäta prestandan så kördes mina två implementationer samt systemets med testprogrammet som hittas i källkodsavsnittet. Programmet allokerar, frigör och omallokerar slumpmässigt stora block av minne. Detta är tänkt att simulera ett program med väldigt oförutsägbart beteende t.ex. ett spel. I verkligheten är självklart inte minneshantering helt slumpad men detta ger förhoppningsvis en bra avvägning mellan enkelhet och noggrannhet.
 
-Som man kan se i figur \ref{fig:my1}, \ref{fig:my2} och \ref{fig:stock} så påverkade inte andelen realloc resultatet märkbart. Detta är inte så förvånande då det bara är två anrop till malloc() respektive free() med lite extra kontroller.
+Varje körning gjordes 10 gånger där programmet kördes med 1, 10, 100, 1000, 10000 resp. 100000 iterationer. Detta upprepades även med 0\%, 10\%, 20\%, 30\%, 40\% samt 50\% reallokeringsanrop. Tids- och minnesåtgång visas i graferna nedan på logaritmerade skalor.
 
-Vi ser även i jämförelsen i figur \ref{fig:comparison} att first-fit och best-fit presterade ungefär lika bra men att de båda presterade något sämre än systemets implementation.
+Som man kan se i figur \ref{fig:my1}, \ref{fig:my2} och \ref{fig:stock} så påverkade inte andelen realloc körningstiden märkbart. Detta är inte så förvånande då det bara är två anrop till malloc() respektive free() med lite extra kontroller.
+
+Vi ser även i tidsjämförelsen i figur \ref{fig:comparison} att first-fit och best-fit presterade ungefär lika bra men att de båda presterade något sämre än systemets implementation.
+
+Vad gäller minnesåtgång så ser vi i figur \ref{fig:mem_comparison} att alla tre algoritmerna förbrukar ungefär samma mängd minne. Systemimplementationen visar högre förbrukning vid få iterationer. Detta kan antingen bero på att systemets implementation allokerar en viss mängd minne från början eller att det skiljer sig i rapporteringen mellan "endHeap()" och "sbrk()".
 
 \clearpage
 
 \begin{figure}
 \includegraphics[scale=0.7]{../results/my1.eps}
-\caption{Testkörning av min malloc() med first-fit och olika grader av realloc.}
+\caption{Tidsmätning av min malloc() med first-fit och olika grader av realloc.}
 \label{fig:my1}
 \end{figure}
 
 \begin{figure}
 \includegraphics[scale=0.7]{../results/my2.eps}
-\caption{Testkörning av min malloc() med best-fit och olika grader av realloc.}
+\caption{Tidsmätning av min malloc() med best-fit och olika grader av realloc.}
 \label{fig:my2}
 \end{figure}
 
 \begin{figure}
 \includegraphics[scale=0.7]{../results/ref.eps}
-\caption{Testkörning av systemets malloc() och olika grader av realloc.}
+\caption{Tidsmätning av systemets malloc() och olika grader av realloc.}
 \label{fig:stock}
 \end{figure}
 
 \begin{figure}
 \includegraphics[scale=0.7]{../results/comparison.eps}
-\caption{Jämförelse mellan de tre implementationerna vid 50\% realloc.}
+\caption{Jämförelse mellan körtiderna av de tre implementationerna vid 50\% realloc.}
 \label{fig:comparison}
+\end{figure}
+
+\begin{figure}
+\includegraphics[scale=0.7]{../results/mem_comparison.eps}
+\caption{Jämförelse mellan minnesanvändningen av de tre implementationerna vid 50\% realloc.}
+\label{fig:mem_comparison}
 \end{figure}
 
 \begin{lstlisting}

@@ -1,5 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
+
+#ifdef MY_MALLOC
+#include "brk.h"
+#endif
 
 #define NUM_BLOCKS 2048
 #define MAX_ALLOC 2048
@@ -10,6 +15,13 @@ int main(int argc, char **argv) {
   /* Set up benchmark */
   unsigned long iterations, rechance, i;
   int action, target, size;
+  void * lowbreak, * highbreak;
+
+  #ifdef MMAP
+    lowbreak = endHeap();
+  #else
+    lowbreak = (void *) sbrk(0);
+  #endif
 
   if(argc != 3) {
     printf("Usage: %s iterations realloc\n", argv[0]);
@@ -47,6 +59,14 @@ int main(int argc, char **argv) {
       }
     }
   }
+
+  #ifdef MMAP
+    highbreak = endHeap();
+  #else
+    highbreak = (void *) sbrk(0);
+  #endif
+
+  printf("%d", (unsigned)(highbreak - lowbreak));
 
   return 0;
 }
